@@ -10,7 +10,7 @@ scrapeData(URL)
       const constellation = new Constellation(item);
       constellation
         .save()
-        .then(() => console.log("Data saved to databse successfully!"))
+        .then(() => console.log("Data saved to database successfully!"))
         .catch((err) => console.log(err));
     });
   })
