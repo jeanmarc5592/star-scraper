@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "scrape": "nodemon scraper/index.js"
+    "scrape": "node scraper/index.js"
   },
   "keywords": [],
   "author": "",
