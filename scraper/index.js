@@ -3,10 +3,10 @@ const URL = "https://www.sterntaufe24.de/sternbilder/";
 
 (async () => {
   const overview = await scrapeOverview(URL);
-  let result;
+  let result = [];
 
-  const setDetails = async () => {
-    const promises = await overview.slice(0, 10).map(async (item) => {
+  const setDetails = async (arr) => {
+    const promises = await arr.map(async (item) => {
       const details = await scrapeDetails(item.details_url);
       delete item.details_url;
       return { ...details };
@@ -14,9 +14,25 @@ const URL = "https://www.sterntaufe24.de/sternbilder/";
     return Promise.all(promises);
   };
 
-  await setDetails()
+  await setDetails(overview.slice(0, 5))
     .then((res) => {
-      result = res;
+      result = [...result, ...res];
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  await setDetails(overview.slice(5, 10))
+    .then((res) => {
+      result = [...result, ...res];
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  await setDetails(overview.slice(10, 15))
+    .then((res) => {
+      result = [...result, ...res];
     })
     .catch((err) => {
       console.log(err);
