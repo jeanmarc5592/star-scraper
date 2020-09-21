@@ -82,6 +82,7 @@ const scrapeData = async (url) => {
     return Promise.all(promises);
   };
 
+  // Scrape 8 items at a time (memory leaks)
   let i = 0;
   while (i + 8 <= overview.length) {
     await setDetails(overview.slice(i, i + 8))

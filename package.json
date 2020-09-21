@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "scrape": "node scraper/index.js",
-    "server": "nodemon server/index.js"
+    "serve": "nodemon server/index.js"
   },
   "keywords": [],
   "author": "",
